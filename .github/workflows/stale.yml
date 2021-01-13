@@ -1,0 +1,21 @@
+name: Stale issues and prs
+
+on:
+  schedule:
+  - cron: "00 0 * * *"
+
+jobs:
+  stale:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/stale@v3
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        stale-issue-message: 'This issue is stale because of 30 days with no activity, this issue will be closed in 5 days'
+        stale-pr-message: 'This pull request is stale because of 30 days with no activity, this pr will be closed in 5 days'
+        stale-issue-label: 'stale-issue'
+        stale-pr-label: 'stale-pr'
+        days-before-stale: 30
+        days-before-close: 5
