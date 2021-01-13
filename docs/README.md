@@ -41,7 +41,7 @@ When you first startup PyTerm you should see something like this:
 ```
 @------------------------------------------------------------------------------------@
 |                                                                                    |
-|                                  |PyTerm v0.4.0|                                   |
+|                                  |PyTerm v0.4.3|                                   |
 |                                                                                    |
 @------------------------------------------------------------------------------------@
 >
@@ -63,4 +63,4 @@ If you want to exit, type `exit` or `terminate`, it should close once you press 
 
 
 
-PyTerm is written 100% in Python
+PyTerm is written in Python and some Batch ( `.cmd`, `.bat` )
