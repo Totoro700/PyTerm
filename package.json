@@ -1,0 +1,23 @@
+{
+	"name": "PyTerm",
+	"version": "0.4.3",
+	"description": "A simple Python terminal",
+	"dependencies": {
+		"python-modules": [
+			"os",
+			"time",
+			"platform",
+			"subprocess",
+			"shutil",
+			"socket",
+			"getpass",
+			"multiprocessing",
+			"webbrowser",
+			"datetime",
+			"tkinter",
+			"sys"
+		]
+	},
+	"main": "src/__main__.py",
+	"change_log": "change.log"
+}
