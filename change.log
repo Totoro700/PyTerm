@@ -1,3 +1,7 @@
-Version 0.4.3 change log
+Version 0.4.4 change log
 
-Added version command
+Added notepad command for opening Windows Notepad
+Shorten lines on date/time command
+Added .gitignore
+Fixed bug: deleting folders/directories/files that are being used by another program
+

@@ -7,16 +7,21 @@ import datetime as dt # Datetime for date and time
 from time import gmtime, strftime
 # webbrowser for openLink command, and datetime for date and time
 
+__cache__ = 0 # Set cache to 0
+prompt = '' # Setup prompt variable
+__os__ = platform.system() # Get operating system name and store it in a variable
+null = None # Create new variable with value of None
+
 # Print version and title as function
 def title():
     print('@------------------------------------------------------------------------------------@')
     print('|                                                                                    |')
-    print('|                                  |PyTerm v0.4.3|                                   |')
+    print('|                                  |PyTerm v0.4.4|                                   |')
     print('|                                                                                    |')
     print('@------------------------------------------------------------------------------------@')
 
 def clear(): # Clear screen
-    if __os__ == 'nt': # Windows
+    if __os__ == 'Windows': # Windows
         os.system('cls')
     else: # Linux and Mac OS X
         os.system('clear')
@@ -39,9 +44,6 @@ def setupColor():
     except:
         os.system('color 0A')
 
-__cache__ = 0 # Set cache to 0
-prompt = '' # Setup prompt variable
-__os__ = os.name # Get operating system name and store it in a variable
 
 def cache():
     try:
@@ -104,6 +106,7 @@ while True:
     print(prompt+' ', end='') # Input prompt without line break ( \n )
     cmd = input('') # Collect input
     if cmd == 'help':
+        print('changelog                               Shows PyTerm\'s change log (../change.log)')
         print('color                                   Changes the text and the background color')
         print('copy                                    Copies a file')
         print('curDir                                  Displays the current directory')
@@ -121,6 +124,7 @@ while True:
         print('info -c                                 Clear stored info')
         print('info -g                                 Get stored info')
         print('ip                                      Displays your computer\'s IP address')
+        print('licenes                                 Shows PyTerm\'s license (../LICENSE.txt)')
         print('md                                      Creates a directory')
         print('math -a                                 Adds two numbers together')
         print('math -s                                 Subtracts two numbers')
@@ -128,6 +132,7 @@ while True:
         print('math -d                                 Divides two numbers')
         print('mkdir                                   Creates a directory')
         print('mkfil                                   Creates a file')
+        print('notepad                                 Opens Windows Notepad')
         print('openBinFil                              Opens a binary file')
         print('openFil                                 Opens a file')
         print('openLink                                Opens a link in your browser')
@@ -145,6 +150,7 @@ while True:
         print('terminate                               Exits the program')
         print('time                                    Also shows date and time\n')
     elif cmd == 'help -a' or cmd == 'help --alt': # Help
+        print('changelog                                                       Shows PyTerm\'s change log (../change.log)')
         print('color                                                            Changes the text and the background color')
         print('copy                                                                                         Copies a file')
         print('curDir                                                                      Displays the current directory')
@@ -159,6 +165,7 @@ while True:
         print('find                                                                       Finds a specific text in a file')
         print('help                                                                            Displays this help message')
         print('ip                                                                    Displays your computer\'s IP address')
+        print('licenes                                                           Shows PyTerm\'s license (../LICENSE.txt)')
         print('math -a                                                                          Adds two numbers together')
         print('math -s                                                                              Subtracts two numbers')
         print('math -m                                                                             Multiplies two numbers')
@@ -166,6 +173,7 @@ while True:
         print('md                                                                                     Creates a directory')
         print('mkdir                                                                                  Creates a directory')
         print('mkfil                                                                                       Creates a file')
+        print('notepad                                 Opens Windows Notepad')
         print('openBinFil                                                                             Opens a binary file')
         print('openFil                                                                                       Opens a file')
         print('openLink                                                                      Opens a link in your browser')
@@ -226,8 +234,11 @@ while True:
         toDel = input('') # Collect directory or file name
         try: # Try if to delete the file
             if fileExists(toDel): # See if file exsits
-                os.remove(toDel)
-                print('Successfully deleted '+toDel)
+                try:
+                    os.remove(toDel)
+                    print('Successfully deleted '+toDel)
+                except:
+                    print('Error! Please make sure that the file in not in us by another program!')
             else:
                 print('The file does not exist!')
         except: # The user might have typed a folder name or the access is deined
@@ -290,8 +301,7 @@ while True:
         print('    -o  or  --overwrite        Overwrites all the stored info with the new info')
         print('    -c  or  --clear            Clears stored info\n\n')
     elif cmd == 'time' or cmd == 'date': # Display date and time
-        time = dt.datetime.now() # Get date and time
-        print(time) # Print date and time
+        print(dt.datetime.now()) # Print date and time
     elif cmd == 'openLink': # Open link in browser
         print('Link?')
         fopenLink(input('')) # Get input and open it in browser
@@ -360,14 +370,17 @@ while True:
     elif cmd == 'find': # Find text in a file
         print('Full file or directory path to find text?')
         toFind = input('') # Get file
-        print('Text to find?')
-        toFindTxt = input('') # Get text to find
-        try:
-            f = open(toFind, 'r') # Open file
-            toFindStr = f.read() # Read from file
-            print('First appearance of the word '+toFindTxt+' is found at character '+str(toFindStr.find(toFindTxt))) # Print results
-        except:
-            print('Error! Please try again') # Error
+        if fileExists(toFind):
+            print('Text to find?')
+            toFindTxt = input('') # Get text to find
+            try:
+                f = open(toFind, 'r') # Open file
+                toFindStr = f.read() # Read from file
+                print('First appearance of the word '+toFindTxt+' is found at character '+str(toFindStr.find(toFindTxt))) # Print results
+            except:
+                print('Error! Please try again') # Error
+        else:
+            print('File does not exist!')
     elif cmd == 'color': # Switch color
         print('Color?') # Ask color
         print('0 = Black       8 = Gray') # Show colors
@@ -404,7 +417,10 @@ while True:
         print('Directory of the folder to delete? Example: C:\\Users\\exampleUser\\Documents\\New_Folder')
         toDelDir = input('') # Get directory
         if fileExists(toDelDir): # Check if directory exists
-            os.rmdir(toDelDir) # Remove directory
+            try:
+                os.rmdir(toDelDir) # Remove directory
+            except:
+                print('Error! Please make sure that directory/folder is not being used by another program!')
         else:
             print('Not a valid directory of a folder!') # Error
     elif cmd == 'rename': # Rename file
@@ -537,8 +553,18 @@ while True:
         print('    -m  or  --multiply   Multiplies two numbers')
         print('    -d  or  --divide     Divides two numbers\n\n')
     elif cmd == 'ver' or cmd == 'version':
-        print('PyTerm v0.4.3')
-    elif cmd == '': # Empty input
+        print('PyTerm v0.4.4')
+    elif cmd == 'notepad': 
+        if __os__ == 'Windows':
+            subprocess.Popen('notepad.exe')
+        else:
+            print('Sorry, notepad is only for Windows!')
+    elif cmd == 'license':
+        if fileExists('../LICENSE.txt'):
+            print(open('../LICENSE.txt', 'r').read())
+        else:
+            print('Could not find license!')
+    elif cmd == '' or cmd == null: # Empty input
         continue # Continue
     else: # Is not a command
         print('Python '+platform.python_version()+' -> PyTerm -> "'+cmd+'" is not a command!') # Error

@@ -1,6 +1,6 @@
 {
 	"name": "PyTerm",
-	"version": "0.4.3",
+	"version": "0.4.4",
 	"description": "A simple Python terminal",
 	"dependencies": {
 		"python-modules": [
