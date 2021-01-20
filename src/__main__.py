@@ -9,8 +9,8 @@ from time import gmtime, strftime
 
 __cache__ = 0 # Set cache to 0
 prompt = '' # Setup prompt variable
-__os__ = platform.system() # Get operating system name and store it in a variable
-null = None # Create new variable with value of None
+__os__ = platform.system() # Get operating system name and store it in a variable (const)
+null = None # Create new variable with value of None (const)
 
 # Print version and title as function
 def title():
@@ -483,7 +483,7 @@ while True:
         except: # Except
             print('Error! Please try again') # Error
     elif cmd == 'exists': # Check if directory or folder exists
-        print('Directory of file of folder?')
+        print('Directory of file or folder?')
         print(fileExists(input('')))
     elif cmd == 'repo': # Open PyTerm's repository on GitHub
         fopenLink('https://github.com/Totoro700/PyTerm/')
@@ -561,11 +561,17 @@ while True:
             subprocess.Popen('notepad.exe')
         else:
             print('Sorry, notepad is only for Windows!')
+    elif cmd == 'py':
+        if __os__ == 'Windows':
+            os.system('start cmd /c py')
+        else:
+            print('Sorry, the "py" command is only for Windows!')
     elif cmd == 'license':
         if fileExists('../LICENSE.txt'):
             print(open('../LICENSE.txt', 'r').read())
         else:
             print('Could not find license!')
+
     elif cmd == '' or cmd == null: # Empty input
         continue # Continue
     else: # Is not a command
