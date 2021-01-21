@@ -240,7 +240,7 @@ while True:
                     os.remove(toDel)
                     print('Successfully deleted '+toDel)
                 except:
-                    print('Error! Please make sure that the file in not in us by another program!')
+                    print('Error! Please make sure that the file in not in use by another program!')
             else:
                 print('The file does not exist!')
         except: # The user might have typed a folder name or the access is deined
