@@ -2,7 +2,7 @@
 
 A simple Python terminal!
 
-![Version](https://img.shields.io/badge/Version-v0.4.5-green)
+![Version](https://img.shields.io/badge/Version-v0.5.0-green)
 
 ![Code size](https://img.shields.io/github/languages/code-size/Totoro700/PyTerm)
 
