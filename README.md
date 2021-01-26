@@ -2,13 +2,21 @@
 
 A simple Python terminal!
 
-![](https://img.shields.io/badge/Version-v0.4.4-green)
+![Version](https://img.shields.io/badge/Version-v0.4.5-green)
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Totoro700/PyTerm)
+![Code size](https://img.shields.io/github/languages/code-size/Totoro700/PyTerm)
 
-![GitHub](https://img.shields.io/github/license/Totoro700/PyTerm)
+![License](https://img.shields.io/github/license/Totoro700/PyTerm)
+
+![](https://img.shields.io/badge/python-%3E%3D%203.0.0-orange)
+
+![Platforms](https://img.shields.io/badge/supported%20platforms-Windows%2C%20Linux%2C%20Mac%20OS-green)
 
 
+
+## Requirements:
+
+Python >= **3.0.0**
 
 ---
 
@@ -18,7 +26,7 @@ Instruction for downloading and running PyTerm!
 
 ### Linux and Mac OS X
 
-Install [Python](https://python.org/downloads)
+Install [Python 3](https://python.org/downloads)
 
 Get the repository:
 
@@ -26,15 +34,15 @@ Git: `git clone https://github.com/Totoro700/PyTerm.git`
 
 GitHub CLI: `gh repo clone Totoro700/PyTerm`
 
-Open `PyTerm`
+Open the folder `PyTerm`
 
-Open `src/`
+Open the folder `src/`
 
-Open `__main__.py` with Python
+Open `__main__.py` with Python 3
 
 ### Windows
 
-Download `.exe` file ( `bin/PyTerm.exe` )
+Get the `.exe` file ( `bin/PyTerm.exe` ), then run it
 
 Or you can do [Linux and Mac OS X steps](#Linux-and-Mac-OS-X)
 

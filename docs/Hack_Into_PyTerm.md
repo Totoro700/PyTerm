@@ -10,11 +10,17 @@ The `store` command let's you store things. But you can change them manually, in
 
 Same thing, but `cache.txt`
 
+If the cache is 1, that means you've ran PyTerm before, else it will be empty
+
 ## Color
 
 It's the same thing for color, go to `user_data` but then click the folder `settings`, then click `color.txt`
 
+`color.txt` will have two characters, the first is a number which will be the foreground/text color, second, is a letter ( `A` to `F` ) which defines the background color
+
 ## Prompt
+
+The default prompt is "`>`" 
 
 Path: `user_data/settings/prompt.txt`
 
@@ -22,8 +28,8 @@ Complete these steps:
 
 - [ ] Open the `user_data` folder
 - [ ] Open the `settings` folder
-- [ ] Double click the file `prompt.txt`
-- [ ] Change the text
+- [ ] Double click/open the file `prompt.txt`
+- [ ] Change the text (the program will automatically add a space right after)
 - [ ] Save file
 - [ ] Open PyTerm
 

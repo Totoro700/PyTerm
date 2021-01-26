@@ -1,8 +1,9 @@
 # __main__.py
 # Import
-# os for file commands and others, time for wait second, platform for os command, subprocess for ping command, multiprocessing for CPU count
-import os, time, platform, subprocess, shutil, socket, getpass, multiprocessing, tkinter, sys
+# os for file commands and others, time for wait second, platform for os command, multiprocessing for CPU count
+import os, time, platform, shutil, socket, getpass, multiprocessing, tkinter, sys
 import webbrowser as web # Webbrowser for openLink command
+import subprocess as sp # Subprocess for ping
 import datetime as dt # Datetime for date and time
 from time import gmtime, strftime
 # webbrowser for openLink command, and datetime for date and time
@@ -10,13 +11,12 @@ from time import gmtime, strftime
 __cache__ = 0 # Set cache to 0
 prompt = '' # Setup prompt variable
 __os__ = platform.system() # Get operating system name and store it in a variable (const)
-null = None # Create new variable with value of None (const)
 
 # Print version and title as function
 def title():
     print('@------------------------------------------------------------------------------------@')
     print('|                                                                                    |')
-    print('|                                  |PyTerm v0.4.4|                                   |')
+    print('|                                  |PyTerm v0.5.0|                                   |')
     print('|                                                                                    |')
     print('@------------------------------------------------------------------------------------@')
 
@@ -32,7 +32,7 @@ def flt(param): # Return float from param
 def ping(host): # Ping a server
     param = '-n' if platform.system().lower() == 'windows' else '-c' # Setup ping parameters
     command = ['ping', param, '4', host]  # 
-    return subprocess.call(command) == 0
+    return sp.call(command) == 0
 
 def fileExists(fileName):
 	return os.path.exists(fileName)
@@ -88,6 +88,7 @@ def promptUpdate(): # Update prompt
 def fopenLink(link):
     web.open(link)
 
+
 def init():
     clear()
     print('Loading . . .')
@@ -115,6 +116,7 @@ while True:
         print('delDir                                  Deletes a directory/folder')
         print('dir                                     Displays a list of files and subdirectories in a directory.')
         print('dirRoot                                 Displays a list of files and subdirectories in the root directory.')
+        print('diskpart                                Displays or configures Disk Partition properties')
         print('echo                                    Displays messages you enter')
         print('exists                                  Checks if a file or folder exists')
         print('exit                                    Exits the program')
@@ -132,6 +134,7 @@ while True:
         print('math -d                                 Divides two numbers')
         print('mkdir                                   Creates a directory')
         print('mkfil                                   Creates a file')
+        print('netstat                                 Displays protocol statistics and current TCP/IP network connections')
         print('notepad                                 [Windows] Opens Windows Notepad')
         print('openBinFil                              Opens a binary file')
         print('openFil                                 Opens a file')
@@ -149,7 +152,9 @@ while True:
         print('systeminfo                              Shows information about you computer')
         print('systeminfo                              Shows your computer\'s infomation')
         print('terminate                               Exits the program')
-        print('time                                    Also shows date and time\n')
+        print('TASKKILL                                Kill or stop a running process or application.')
+        print('time                                    Also shows date and time')
+        print('tree                                    Graphically displays the directory structure of a drive or path\n')
     elif cmd == 'help -a' or cmd == 'help --alt': # Help
         print('changelog                                                       Shows PyTerm\'s change log (../change.log)')
         print('color                                                            Changes the text and the background color')
@@ -160,11 +165,15 @@ while True:
         print('delDir                                                                          Deletes a directory/folder')
         print('dir                                            Displays a list of files and subdirectories in a directory.')
         print('dirRoot                                 Displays a list of files and subdirectories in the root directory.')
+        print('diskpart                                                  Displays or configures Disk Partition properties')
         print('echo                                                                           Displays messages you enter')
         print('exists                                                                   Checks if a file or folder exists')
         print('exit                                                                                     Exits the program')
         print('find                                                                       Finds a specific text in a file')
         print('help                                                                            Displays this help message')
+        print('info                                                                                           Stores info')
+        print('info -c                                                                                  Clear stored info')
+        print('info -g                                                                                    Get stored info')
         print('ip                                                                    Displays your computer\'s IP address')
         print('licenes                                                           Shows PyTerm\'s license (../LICENSE.txt)')
         print('math -a                                                                          Adds two numbers together')
@@ -174,6 +183,7 @@ while True:
         print('md                                                                                     Creates a directory')
         print('mkdir                                                                                  Creates a directory')
         print('mkfil                                                                                       Creates a file')
+        print('netstat                                Displays protocol statistics and current TCP/IP network connections')
         print('notepad                                                                    [Windows] Opens Windows Notepad')
         print('openBinFil                                                                             Opens a binary file')
         print('openFil                                                                                       Opens a file')
@@ -188,11 +198,12 @@ while True:
         print('repo                                                                           Opens the GitHub repository')
         print('restart                                                                             Restarts your computer')
         print('shutdown                                                                            Shutdown your computer')
-        print('store                                                                                          Stores info')
         print('systeminfo                                                               Shows your computer\'s infomation')
         print('sysinfo                                                                  Shows your computer\'s infomation')
         print('terminate                                                                                Exits the program')
-        print('time                                                                              Also shows date and time\n')
+        print('TASKKILL                                                    Kill or stop a running process or application.')
+        print('time                                                                              Also shows date and time')
+        print('tree                                       Graphically displays the directory structure of a drive or path\n')
     elif cmd == 'help -h' or cmd == 'help --help' or cmd == 'help /?':
         print('Usage:    help [-a]\n\n\n\n')
         print('Parameters: \n')
@@ -384,7 +395,7 @@ while True:
         else:
             print('File does not exist!')
     elif cmd == 'color': # Switch color
-        print('Color?') # Ask color
+        print('Colors:') # Ask color
         print('0 = Black       8 = Gray') # Show colors
         print('1 = Blue        9 = Light Blue')
         print('2 = Green       A = Light Green')
@@ -487,65 +498,65 @@ while True:
         print(fileExists(input('')))
     elif cmd == 'repo': # Open PyTerm's repository on GitHub
         fopenLink('https://github.com/Totoro700/PyTerm/')
-    elif cmd == 'math --add': # Add
-        print('Number one -> ', end='')
+    elif cmd == 'math -a' or cmd == 'math --add': # Add
+        print('Number one -> ', end='') # Get number one
         try:
-            numOne = flt(input(''))
+            numOne = flt(input('')) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number')
+            print('Error! Please make sure you entered a valid number') # Error
             continue
-        print('Number two -> ', end='')
+        print('Number two -> ', end='') # Get number two
         try:
-            numTwo = flt(input(''))
+            numTwo = flt(input('')) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number')
+            print('Error! Please make sure you entered a valid number') # Error
             continue
-        print(str(numOne)+' + '+str(numTwo)+' = '+str(numOne + numTwo))
+        print(str(numOne)+' + '+str(numTwo)+' = '+str(numOne + numTwo)) # Calculate and output answer
     elif cmd == 'math -s' or cmd == 'math --subtract': # Subtract
-        print('Number one -> ', end='')
+        print('Number one -> ', end='') # Get number one
         try:
-            numOne = flt(input(''))
+            numOne = flt(input('')) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number')
+            print('Error! Please make sure you entered a valid number') # Error
             continue
-        print('Number two -> ', end='')
+        print('Number two -> ', end='') # Get number two
         try:
-            numTwo = flt(input(''))
+            numTwo = flt(input('')) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number')
+            print('Error! Please make sure you entered a valid number') # Error
             continue
-        print(str(numOne)+' - '+str(numTwo)+' = '+str(numOne - numTwo))
+        print(str(numOne)+' - '+str(numTwo)+' = '+str(numOne - numTwo)) # Calculate and output answer
     elif cmd == 'math -m' or cmd == 'math --multiply': # Multiply
-        print('Number one -> ', end='')
+        print('Number one -> ', end='') # Get number one
         try:
-            numOne = flt(input(''))
+            numOne = flt(input('')) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number')
+            print('Error! Please make sure you entered a valid number') # Error
             continue
-        print('Number two -> ', end='')
+        print('Number two -> ', end='') # Get number two
         try:
-            numTwo = flt(input(''))
+            numTwo = flt(input('')) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number')
+            print('Error! Please make sure you entered a valid number') # Error
             continue
-        print(str(numOne)+' * '+str(numTwo)+' = '+str(numOne * numTwo))
+        print(str(numOne)+' * '+str(numTwo)+' = '+str(numOne * numTwo)) # Calculate and output answer
     elif cmd == 'math -d' or cmd == 'math --divide': # Divide
-        print('Number one -> ', end='')
+        print('Number one -> ', end='') # Get number one
         try:
-            numOne = flt(input(''))
+            numOne = flt(input('')) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number')
+            print('Error! Please make sure you entered a valid number') # Error
             continue
-        print('Number two -> ', end='')
+        print('Number two -> ', end='') # Get number two
         try:
-            numTwo = flt(input(''))
+            numTwo = flt(input('')) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number')
+            print('Error! Please make sure you entered a valid number') # Error
             continue
         try:
-            print(str(numOne)+' / '+str(numTwo)+' = '+str(numOne / numTwo))
+            print(str(numOne)+' / '+str(numTwo)+' = '+str(numOne / numTwo)) # Try to calculate and output answer
         except ZeroDivisionError: # Divisor is zero
-            print('Error! Please make sure the divisor isn\'t zero!')
+            print('Error! Please make sure the divisor isn\'t zero!') # Error
         except: # Error
             print('Error! Please try again!')
     elif cmd == 'math -h' or cmd == 'math --help' or cmd == 'math /?' or cmd == 'math -?' or cmd == 'math': # Math help
@@ -554,25 +565,64 @@ while True:
         print('    -s  or  --subtract   Subtracts two numbers')
         print('    -m  or  --multiply   Multiplies two numbers')
         print('    -d  or  --divide     Divides two numbers\n\n')
-    elif cmd == 'ver' or cmd == 'version':
-        print('PyTerm v0.4.4')
-    elif cmd == 'notepad': 
-        if __os__ == 'Windows':
-            subprocess.Popen('notepad.exe')
+    elif cmd == 'ver' or cmd == 'version': # Program version
+        print('PyTerm v0.5.0')
+    elif cmd == 'notepad':  # Open Windows notepad
+        if __os__ == 'Windows': # Check if OS is Windows
+            sp.Popen('notepad.exe') # subprocess.Popen
         else:
-            print('Sorry, notepad is only for Windows!')
-    elif cmd == 'py':
+            print('Sorry, notepad is only for Windows!') # Error
+    elif cmd == 'py': # Python
         if __os__ == 'Windows':
             os.system('start cmd /c py')
         else:
             print('Sorry, the "py" command is only for Windows!')
-    elif cmd == 'license':
-        if fileExists('../LICENSE.txt'):
-            print(open('../LICENSE.txt', 'r').read())
+    elif cmd == 'license': # Open license
+        if fileExists('../LICENSE.txt'): # Check if exists
+            print(open('../LICENSE.txt', 'r').read()) # Find, read, and output
         else:
-            print('Could not find license!')
-
-    elif cmd == '' or cmd == null: # Empty input
+            print('Could not find license!') # Error
+    elif cmd == 'os': # OS
+        print(platform.system())
+    elif cmd == 'osver': # OS version
+        print(platform.version())
+    elif cmd == 'netstat': # Network status
+        print(os.system('netstat'))
+    elif cmd == 'diskpart': # Diskpart
+        if __os__ == 'Windows': # Check if OS is Windows
+            os.system('start cmd /c diskpart') # Open diskpart in cmd
+        else:
+            print('Error!, diskpart is only for Windows') # Not Windows
+    elif cmd == 'TASKKILL': # Force kill a task
+        print('Program file name -> ', end='') # Get program name
+        toTaskkill = input()
+        os.system("taskkill /F /im "+toTaskkill) # Taskkill
+    elif cmd == 'runPy': # Run python script
+        print('Directory of Python file to run -> ', end='') # Get file
+        try:
+            if __os__ == 'Windows': # For Windows
+                os.system('start cmd /c py '+input(''))
+            elif __os__ == 'Linux': # For Linux
+                os.system('start gnome-terminal python '+input(''))
+            elif __os__ == 'Darwin': # For Mac OS
+                os.system('start open -a Terminal python '+input(''))
+        except:
+            print('Error! Please try again!')
+    elif cmd == 'move': # Move file
+        print('Path/directory to current file to move -> ', end='') # Get current file
+        curFil = input()
+        if fileExists(curFil): # CHeck if current file exists
+            print('Path/directory to new file -> ', end='') # New file
+            try:
+                os.rename(curFil, input()) # Try move using os.rename
+            except:
+                print('Error! Make sure both directories are valid and no programs are using the file.') # Error
+        else:
+            print('That file does not exists! Please try again') # File does not exists
+    elif cmd == 'tree': # Tree
+        print('Directory (backslash for root) -> ', end='') # Get directory
+        os.system('tree '+str(input())) # Output
+    elif cmd == '' or cmd == None: # Empty input
         continue # Continue
     else: # Is not a command
         print('Python '+platform.python_version()+' -> PyTerm -> "'+cmd+'" is not a command!') # Error

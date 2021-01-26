@@ -1,7 +1,13 @@
-Version 0.4.4 change log
+Version 0.5.0 change log
 
-Added notepad command for opening Windows Notepad
-Shorten lines on date/time command
-Added .gitignore
-Fixed bug: deleting folders/directories/files that are being used by another program
+New commands:
+Added py command in src/__main__.py for opening Python interpreter
+Added move command to move a file
+Added tree command to graphically display the directory structure of a drive or path
+Added runPy to run a python files
 
+
+Updates/fixes:
+Fixed alignment issue in src/__main__.py (#1)
+Fixed typos in src/__main__.py (#2, #3)
+Updated parameters for math command (math -a)

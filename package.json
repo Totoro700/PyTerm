@@ -1,6 +1,6 @@
 {
 	"name": "PyTerm",
-	"version": "0.4.4",
+	"version": "0.5.0",
 	"description": "A simple Python terminal",
 	"dependencies": {
 		"python-modules": [
@@ -16,7 +16,8 @@
 			"datetime",
 			"tkinter",
 			"sys"
-		]
+		],
+		"python": ">=3"
 	},
 	"main": "src/__main__.py",
 	"change_log": "change.log"
