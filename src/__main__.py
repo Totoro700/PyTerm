@@ -31,13 +31,13 @@ def flt(param): # Return float from param
 
 def ping(host): # Ping a server
     param = '-n' if platform.system().lower() == 'windows' else '-c' # Setup ping parameters
-    command = ['ping', param, '4', host]  # 
-    return sp.call(command) == 0
+    command = ['ping', param, '4', host] # Ping command
+    return sp.call(command) == 0 # Return text
 
-def fileExists(fileName):
+def fileExists(fileName): # Check if file or directory exists
 	return os.path.exists(fileName)
 
-def setupColor():
+def setupColor(): # Setup text and background color
     try:
         f = open('user_data/settings/color.txt', 'r')
         os.system(f.read())
@@ -105,7 +105,7 @@ init()
 # Main loop
 while True:
     print(prompt+' ', end='') # Input prompt without line break ( \n )
-    cmd = input('') # Collect input
+    cmd = input() # Collect input
     if cmd == 'help':
         print('changelog                               Shows PyTerm\'s change log')
         print('color                                   Changes the text and the background color')
@@ -143,6 +143,7 @@ while True:
         print('ping                                    Pings a server with an IP address')
         print('print                                   Displays messages you enter')
         print('py                                      [Windows] Opens Python\'s interpreter in cmd in a new window')
+        print('pyver                                   Displays Python version')
         print('rename                                  Renames a file')
         print('repo                                    Opens the GitHub repository')
         print('reset                                   Resets to the title screen')
@@ -193,6 +194,7 @@ while True:
         print('ping                                                                     Pings a server with an IP address')
         print('print                                                                          Displays messages you enter')
         print('py                                            [Windows] Opens Python\'s interpreter in cmd in a new window')
+        print('pyver                                                                              Displays Python version')
         print('rename                                                                                      Renames a file')
         print('reset                                                                           Resets to the title screen')
         print('repo                                                                           Opens the GitHub repository')
@@ -211,20 +213,21 @@ while True:
     elif cmd == 'mkdir' or cmd == 'md': # Make directory
         print('Directory name?')
         try:
-            os.mkdir(input(''))
+            os.mkdir(input())
         except:
             print('Error! Please try again and make sure that it is a valid directory name and it doesn\'t already exists!')
     elif cmd == 'mkfil': # Make file
         print('Full file name? (eg. "text.txt" or "index.html" or "python.py"). This file will be placed next to the program')
-        fileName = input('')
+        fileName = input()
         try:
             f = open(fileName, 'x')
             print('Successfully created '+fileName)
+            f.close()
         except:
             print('Error! Please try again and make sure that it is a valid file name and it doesn\'t already exists!')
     elif cmd == 'openFil': # Open file
         print('Full file name or directory? (eg. "text.txt" or "C:\\Python\\python.py")')
-        toOpen = input('')
+        toOpen = input()
         if fileExists(toOpen):
             f = open(toOpen, 'r')
             print(f.read())
@@ -232,7 +235,7 @@ while True:
             print('The file does not exist!')
     elif cmd == 'openBinFil': # Open binary file
         print('Full binary file name or directory? (eg. "cmd.exe" or "C:\\Python\\python.dll")')
-        toOpen = input('') # Collect full directory or full file name
+        toOpen = input() # Collect full directory or full file name
         print('Loading . . .')
         time.sleep(3)
         if fileExists(toOpen): # See if file exsits
@@ -244,7 +247,7 @@ while True:
         print(os.path.dirname(os.path.abspath(__file__)))
     elif cmd == 'del' or cmd == 'delete': # Delete
         print('Full file name or directory to delete? (eg. "text.txt" or "C:\\Trash\\text.txt")')
-        toDel = input('') # Collect directory or file name
+        toDel = input() # Collect directory or file name
         try: # Try if to delete the file
             if fileExists(toDel): # See if file exsits
                 try:
@@ -258,7 +261,7 @@ while True:
             print('Something went wrong! Make sure it\'s a file, not a folder, with it\'s file extension and this program has access to it!')
     elif cmd == 'info' or cmd == 'info -s' or cmd == 'info --store': # Store data
         print('Info to store?')
-        toStore = input('') # Collect string to store
+        toStore = input() # Collect string to store
         if not fileExists('user_data/info.txt'): # See if the file info.txt exsits
             if fileExists('user_data'):
                 f = open('user_data/info.txt', 'x') # Open info.txt or create one
@@ -275,7 +278,7 @@ while True:
             f.close() # Close
     elif cmd == 'info -o' or cmd == 'info --overwrite': # Overwrite stored info
         print('Info to overwrite?')
-        toStore = input('') # Collect string to store
+        toStore = input() # Collect string to store
         if not fileExists('user_data/info.txt'): # See if the file info.txt exsits
             if fileExists('user_data'):
                 if fileExists('user_data/info.txt'):
@@ -317,7 +320,7 @@ while True:
         print(dt.datetime.now()) # Print date and time
     elif cmd == 'openLink': # Open link in browser
         print('Link?')
-        fopenLink(input('')) # Get input and open it in browser
+        fopenLink(input()) # Get input and open it in browser
     elif cmd == 'cls' or cmd == 'CLS': # Clear
         print('Loading . . .')
         clear()
@@ -335,7 +338,7 @@ while True:
         print('    -f  or  --force     Force terminate\n\n')
     elif cmd == 'ping': # Ping server
         print('IP address to ping?')
-        ping(input('')) # Get input and start ping
+        ping(input()) # Get input and start ping
     elif cmd == 'ping -s' or cmd == 'ping --self': # Ping self server
         ping(socket.gethostbyname(socket.gethostname())) # Get self server and start ping
     elif cmd == 'systeminfo' or cmd == 'sysinfo':
@@ -370,22 +373,22 @@ while True:
         clear() # Clear
         title() # Print start title
     elif cmd == 'echo': # Echo message
-        print(input(''))
+        print(input())
     elif cmd == 'copy': # Copy a file
         print('Full file or directory name to copy?')
-        toCopy = input('') # Get file
+        toCopy = input() # Get file
         print('Directory path to copy it to?')
-        toCopyDir = input('') # Get directory path to copy to
+        toCopyDir = input() # Get directory path to copy to
         try:
             shutil.copy(toCopy, toCopyDir) # Copy
         except:
             print('Error! Please try again') # Error
     elif cmd == 'find': # Find text in a file
         print('Full file or directory path to find text?')
-        toFind = input('') # Get file
+        toFind = input() # Get file
         if fileExists(toFind):
             print('Text to find?')
-            toFindTxt = input('') # Get text to find
+            toFindTxt = input() # Get text to find
             try:
                 f = open(toFind, 'r') # Open file
                 toFindStr = f.read() # Read from file
@@ -405,9 +408,9 @@ while True:
         print('6 = Yellow      E = Light Yellow')
         print('7 = White       F = Bright White')
         print('Background color?')
-        bgColor = input('') # Get background color
+        bgColor = input() # Get background color
         print('Text color (foreground)?')
-        fgColor = input('') # Get foreground color
+        fgColor = input() # Get foreground color
         try: # Try switch color
             os.system('color '+bgColor+fgColor) # Switch color
             if fileExists('user_data'): # Check if folder user_data exists
@@ -428,7 +431,7 @@ while True:
             print('Error! Please try again') # Error
     elif cmd == 'delDir' or cmd == 'rm': # Delete directory
         print('Directory of the folder to delete? Example: C:\\Users\\exampleUser\\Documents\\New_Folder')
-        toDelDir = input('') # Get directory
+        toDelDir = input() # Get directory
         if fileExists(toDelDir): # Check if directory exists
             try:
                 os.rmdir(toDelDir) # Remove directory
@@ -438,16 +441,16 @@ while True:
             print('Not a valid directory of a folder!') # Error
     elif cmd == 'rename': # Rename file
         print('Full directory path of the file to rename? Example: C:\\Users\\exampleUser\\Documents\\original_file_name.txt')
-        toRename = input('') # Get old file name
+        toRename = input() # Get old file name
         print('Full new directory path for the file? Example: C:\\Users\\exampleUser\\Documents\\new_file_name.txt')
-        toRenameName = input('') # Get new file name
+        toRenameName = input() # Get new file name
         try:
             os.rename(toRename, toRenameName) # Rename
         except:
             print('Error! Please try again') # Error
     elif cmd == 'dir': # Directory
         print('Directory?')
-        dir = input('') # Get directory
+        dir = input() # Get directory
         try: # Try code
             print(', '.join(os.listdir(dir))) # Print directory
         except: # Error
@@ -455,7 +458,7 @@ while True:
     elif cmd == 'dir /' or cmd == 'dir \\': # Root directory
         print(', '.join(os.listdir(dir))) # Print directory
     elif cmd == 'print': # Print
-        print(input('')) # Get thing to print and print
+        print(input()) # Get thing to print and print
     elif cmd == 'dirRoot': # Directory of root
         print(', '.join(os.listdir('\\'))) # List
     elif cmd == 'cmd': # Open cmd
@@ -469,13 +472,13 @@ while True:
         print(ip) # Return/print IP address
     elif cmd == 'openWindow': # Open window with Tkinter
         print('Window name?') # Ask window name
-        windowName = input('') # Get window name
+        windowName = input() # Get window name
         window = tkinter.Tk() # Setup variable
         window.title(windowName) # Set title
         window.mainloop() # Open
     elif cmd == 'changePrompt': # Change command prompt
         print('New prompt?') # Ask for new prompt
-        prompt = input('') # Get new prompt
+        prompt = input() # Get new prompt
         try: # Test code
             if fileExists('user_data'): # Check if folder user_data exists
                 if fileExists('user_data/settings/prompt.txt'): # Check if settings/prompt.txt in user_data exists
@@ -492,22 +495,22 @@ while True:
                 f.write(prompt) # Write
                 f.close() # Close
         except: # Except
-            print('Error! Please try again') # Error
+            continue # Error
     elif cmd == 'exists': # Check if directory or folder exists
         print('Directory of file or folder?')
-        print(fileExists(input('')))
+        print(fileExists(input()))
     elif cmd == 'repo': # Open PyTerm's repository on GitHub
         fopenLink('https://github.com/Totoro700/PyTerm/')
     elif cmd == 'math -a' or cmd == 'math --add': # Add
         print('Number one -> ', end='') # Get number one
         try:
-            numOne = flt(input('')) # Try to get input as float
+            numOne = flt(input()) # Try to get input as float
         except:
             print('Error! Please make sure you entered a valid number') # Error
             continue
         print('Number two -> ', end='') # Get number two
         try:
-            numTwo = flt(input('')) # Try to get input as float
+            numTwo = flt(input()) # Try to get input as float
         except:
             print('Error! Please make sure you entered a valid number') # Error
             continue
@@ -515,13 +518,13 @@ while True:
     elif cmd == 'math -s' or cmd == 'math --subtract': # Subtract
         print('Number one -> ', end='') # Get number one
         try:
-            numOne = flt(input('')) # Try to get input as float
+            numOne = flt(input()) # Try to get input as float
         except:
             print('Error! Please make sure you entered a valid number') # Error
             continue
         print('Number two -> ', end='') # Get number two
         try:
-            numTwo = flt(input('')) # Try to get input as float
+            numTwo = flt(input()) # Try to get input as float
         except:
             print('Error! Please make sure you entered a valid number') # Error
             continue
@@ -529,13 +532,13 @@ while True:
     elif cmd == 'math -m' or cmd == 'math --multiply': # Multiply
         print('Number one -> ', end='') # Get number one
         try:
-            numOne = flt(input('')) # Try to get input as float
+            numOne = flt(input()) # Try to get input as float
         except:
             print('Error! Please make sure you entered a valid number') # Error
             continue
         print('Number two -> ', end='') # Get number two
         try:
-            numTwo = flt(input('')) # Try to get input as float
+            numTwo = flt(input()) # Try to get input as float
         except:
             print('Error! Please make sure you entered a valid number') # Error
             continue
@@ -543,13 +546,13 @@ while True:
     elif cmd == 'math -d' or cmd == 'math --divide': # Divide
         print('Number one -> ', end='') # Get number one
         try:
-            numOne = flt(input('')) # Try to get input as float
+            numOne = flt(input()) # Try to get input as float
         except:
             print('Error! Please make sure you entered a valid number') # Error
             continue
         print('Number two -> ', end='') # Get number two
         try:
-            numTwo = flt(input('')) # Try to get input as float
+            numTwo = flt(input()) # Try to get input as float
         except:
             print('Error! Please make sure you entered a valid number') # Error
             continue
@@ -601,11 +604,11 @@ while True:
         print('Directory of Python file to run -> ', end='') # Get file
         try:
             if __os__ == 'Windows': # For Windows
-                os.system('start cmd /c py '+input(''))
+                os.system('start cmd /c py '+input())
             elif __os__ == 'Linux': # For Linux
-                os.system('start gnome-terminal python '+input(''))
+                os.system('start gnome-terminal python '+input())
             elif __os__ == 'Darwin': # For Mac OS
-                os.system('start open -a Terminal python '+input(''))
+                os.system('start open -a Terminal python '+input())
         except:
             print('Error! Please try again!')
     elif cmd == 'move': # Move file
@@ -622,6 +625,8 @@ while True:
     elif cmd == 'tree': # Tree
         print('Directory (backslash for root) -> ', end='') # Get directory
         os.system('tree '+str(input())) # Output
+    elif cmd == 'pyver': # Python version
+        print('Python '+platform.python_version())
     elif cmd == '' or cmd == None: # Empty input
         continue # Continue
     else: # Is not a command
