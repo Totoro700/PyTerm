@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Pkg name='PyTerm' type='pkg'>
+	<Name type='name'>PyTerm</Name>
+	<Version type='ver'>0.5.1</Version>
+	<Description type='text'>A simple Python terminal!</Description>
+	<License type='obj'>
+		<Type type='name'>MIT</Type>
+		<File type='path'>./LICENSE.txt</File>
+	</License>
+	<Dependencies type='obj'>
+		<PythonVersion type='ver'>>=3.0.0</PythonVersion>
+		<PythonModules type='list'>			
+			os,
+			time,
+			platform,
+			subprocess,
+			shutil,
+			socket,
+			getpass,
+			multiprocessing,
+			webbrowser,
+			datetime,
+			tkinter,
+			sys,
+			ctypes
+		</PythonModules>
+	</Dependencies>
+	<Main type='path'>src/__main__.py</Main>
+	<ChangeLog type='path'>change.log</ChangeLog>
+</Pkg>

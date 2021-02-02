@@ -1,7 +1,7 @@
 # __main__.py
 # Import
 # os for file commands and others, time for wait second, platform for os command, multiprocessing for CPU count
-import os, time, platform, shutil, socket, getpass, multiprocessing, tkinter, sys
+import os, time, platform, shutil, socket, getpass, multiprocessing, tkinter, sys, ctypes
 import webbrowser as web # Webbrowser for openLink command
 import subprocess as sp # Subprocess for ping
 import datetime as dt # Datetime for date and time
@@ -34,8 +34,8 @@ def ping(host): # Ping a server
     command = ['ping', param, '4', host] # Ping command
     return sp.call(command) == 0 # Return text
 
-def fileExists(fileName): # Check if file or directory exists
-	return os.path.exists(fileName)
+def fileExists(name):
+    return os.path.exists(name)
 
 def setupColor(): # Setup text and background color
     try:
@@ -136,12 +136,18 @@ while True:
         print('mkfil                                   Creates a file')
         print('netstat                                 Displays protocol statistics and current TCP/IP network connections')
         print('notepad                                 [Windows] Opens Windows Notepad')
+        print('npm install                             Install npm package')
+        print('npm update                              Update npm package')
+        print('npm upgrade                             Upgrade npm package')
         print('openBinFil                              Opens a binary file')
         print('openFil                                 Opens a file')
         print('openLink                                Opens a link in your browser')
         print('openWindow                              Opens a window')
         print('ping                                    Pings a server with an IP address')
+        print('pip install                             Installs pip package')
+        print('pip install -U                          Updates pip package')
         print('print                                   Displays messages you enter')
+        print('prompt                                  Changes the prompt')
         print('py                                      [Windows] Opens Python\'s interpreter in cmd in a new window')
         print('pyver                                   Displays Python version')
         print('rename                                  Renames a file')
@@ -155,6 +161,7 @@ while True:
         print('terminate                               Exits the program')
         print('TASKKILL                                Kill or stop a running process or application.')
         print('time                                    Also shows date and time')
+        print('title                                   [Windows] Changes the console title')
         print('tree                                    Graphically displays the directory structure of a drive or path\n')
     elif cmd == 'help -a' or cmd == 'help --alt': # Help
         print('changelog                                                       Shows PyTerm\'s change log (../change.log)')
@@ -186,6 +193,9 @@ while True:
         print('mkfil                                                                                       Creates a file')
         print('netstat                                Displays protocol statistics and current TCP/IP network connections')
         print('notepad                                                                    [Windows] Opens Windows Notepad')
+        print('npm install                                                                            Install npm package')
+        print('npm update                                                                              Update npm package')
+        print('npm upgrade                                                                            Upgrade npm package')
         print('openBinFil                                                                             Opens a binary file')
         print('openFil                                                                                       Opens a file')
         print('openLink                                                                      Opens a link in your browser')
@@ -193,6 +203,9 @@ while True:
         print('systeminfo                                                            Shows information about you computer')
         print('ping                                                                     Pings a server with an IP address')
         print('print                                                                          Displays messages you enter')
+        print('prompt                                                                                  Changes the prompt')
+        print('pip install                                                                           Installs pip package')
+        print('pip install -U                                                                         Updates pip package')
         print('py                                            [Windows] Opens Python\'s interpreter in cmd in a new window')
         print('pyver                                                                              Displays Python version')
         print('rename                                                                                      Renames a file')
@@ -205,6 +218,7 @@ while True:
         print('terminate                                                                                Exits the program')
         print('TASKKILL                                                    Kill or stop a running process or application.')
         print('time                                                                              Also shows date and time')
+        print('title                                                                  [Windows] Changes the console title')
         print('tree                                       Graphically displays the directory structure of a drive or path\n')
     elif cmd == 'help -h' or cmd == 'help --help' or cmd == 'help /?':
         print('Usage:    help [-a]\n\n\n\n')
@@ -476,7 +490,7 @@ while True:
         window = tkinter.Tk() # Setup variable
         window.title(windowName) # Set title
         window.mainloop() # Open
-    elif cmd == 'changePrompt': # Change command prompt
+    elif cmd == 'changePrompt' or cmd == 'prompt': # Change command prompt
         print('New prompt?') # Ask for new prompt
         prompt = input() # Get new prompt
         try: # Test code
@@ -593,7 +607,7 @@ while True:
         print(os.system('netstat'))
     elif cmd == 'diskpart': # Diskpart
         if __os__ == 'Windows': # Check if OS is Windows
-            os.system('start cmd /c diskpart') # Open diskpart in cmd
+            os.system('diskpart') # Open diskpart in cmd
         else:
             print('Error!, diskpart is only for Windows') # Not Windows
     elif cmd == 'TASKKILL': # Force kill a task
@@ -609,6 +623,8 @@ while True:
                 os.system('start gnome-terminal python '+input())
             elif __os__ == 'Darwin': # For Mac OS
                 os.system('start open -a Terminal python '+input())
+            else:
+                print('OS is not recognized!')
         except:
             print('Error! Please try again!')
     elif cmd == 'move': # Move file
@@ -627,6 +643,39 @@ while True:
         os.system('tree '+str(input())) # Output
     elif cmd == 'pyver': # Python version
         print('Python '+platform.python_version())
+    elif cmd == 'npm install': # Install package via npm
+        print('Package name?')
+        pkgName = input()
+        os.system('npm install '+pkgName)
+    elif cmd == 'npm upgrade' or cmd == 'npm install -U' or cmd == 'npm update': # Update/upgrade package via npm
+        print('Package name?')
+        pkgName = input()
+        os.system('npm install '+pkgName)
+    elif cmd == 'pip install': # Install package via pip
+        print('Package name?')
+        pkgName = input()
+        os.system('pip install '+pkgName)
+    elif cmd == 'pip install -U' or cmd == 'pip update' or cmd == 'pip upgrade': # Update/upgrade package via pip
+        print('Package name?')
+        pkgName = input()
+        os.system('pip install -U '+pkgName)
+    elif cmd == 'git clone': # Clone Git repository using url
+        print('Repository url?')
+        repoURL= input('')
+        print('Directory to clone it to?')
+        repoPath = input('')
+        print('Name to clone it as?')
+        repoName = input('')
+        try:
+            os.system('cd '+repoPath+' & git clone '+repoURL+' '+repoName)
+        except:
+            print('Error! Please make sure the directory and repository url is valid!')
+    elif cmd == 'title':
+        if __os__ == 'Windows':
+            print('New title -> ', end='')
+            ctypes.windll.kernel32.SetConsoleTitleW(input())
+        else:
+            print('This function is only for Windows!')
     elif cmd == '' or cmd == None: # Empty input
         continue # Continue
     else: # Is not a command

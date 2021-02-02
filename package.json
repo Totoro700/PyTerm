@@ -1,8 +1,13 @@
 {
 	"name": "PyTerm",
-	"version": "0.5.0",
+	"version": "0.5.1",
 	"description": "A simple Python terminal",
+	"license": {
+		"type": "MIT",
+		"path": "./LICENSE.txt"
+	},
 	"dependencies": {
+		"python": ">=3",
 		"python-modules": [
 			"os",
 			"time",
@@ -15,9 +20,9 @@
 			"webbrowser",
 			"datetime",
 			"tkinter",
-			"sys"
+			"sys",
+			"ctypes"
 		],
-		"python": ">=3"
 	},
 	"main": "src/__main__.py",
 	"change_log": "change.log"
