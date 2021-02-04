@@ -248,12 +248,13 @@ while True:
         else:
             print('The file does not exist!')
     elif cmd == 'openBinFil': # Open binary file
+        print('WARNING: This command may print a lot of text')
         print('Full binary file name or directory? (eg. "cmd.exe" or "C:\\Python\\python.dll")')
         toOpen = input() # Collect full directory or full file name
         print('Loading . . .')
         time.sleep(3)
         if fileExists(toOpen): # See if file exsits
-            f = open(toOpen, 'rb') # Open binary file
+            f = open(toOpen, 'rb') # Open/read binary file
             print(f.read()) # Display file
         else:
             print('The file does not exist!')
@@ -583,7 +584,7 @@ while True:
         print('    -m  or  --multiply   Multiplies two numbers')
         print('    -d  or  --divide     Divides two numbers\n\n')
     elif cmd == 'ver' or cmd == 'version': # Program version
-        print('PyTerm v0.5.0')
+        print('PyTerm v0.5.1')
     elif cmd == 'notepad':  # Open Windows notepad
         if __os__ == 'Windows': # Check if OS is Windows
             sp.Popen('notepad.exe') # subprocess.Popen
@@ -645,32 +646,32 @@ while True:
         print('Python '+platform.python_version())
     elif cmd == 'npm install': # Install package via npm
         print('Package name?')
-        pkgName = input()
+        pkgName = input() # Get pkg name
         os.system('npm install '+pkgName)
     elif cmd == 'npm upgrade' or cmd == 'npm install -U' or cmd == 'npm update': # Update/upgrade package via npm
         print('Package name?')
-        pkgName = input()
+        pkgName = input() # Get pkg name
         os.system('npm install '+pkgName)
     elif cmd == 'pip install': # Install package via pip
         print('Package name?')
-        pkgName = input()
+        pkgName = input() # Get pkg name
         os.system('pip install '+pkgName)
     elif cmd == 'pip install -U' or cmd == 'pip update' or cmd == 'pip upgrade': # Update/upgrade package via pip
         print('Package name?')
-        pkgName = input()
+        pkgName = input() # Get pkg name
         os.system('pip install -U '+pkgName)
     elif cmd == 'git clone': # Clone Git repository using url
         print('Repository url?')
-        repoURL= input('')
+        repoURL = input('') # Get repository URL
         print('Directory to clone it to?')
-        repoPath = input('')
+        repoPath = input('') # Get directory to clone repo to
         print('Name to clone it as?')
-        repoName = input('')
+        repoName = input('') # Name to clone the repo as
         try:
             os.system('cd '+repoPath+' & git clone '+repoURL+' '+repoName)
         except:
             print('Error! Please make sure the directory and repository url is valid!')
-    elif cmd == 'title':
+    elif cmd == 'title': # Change console title
         if __os__ == 'Windows':
             print('New title -> ', end='')
             ctypes.windll.kernel32.SetConsoleTitleW(input())
@@ -679,5 +680,5 @@ while True:
     elif cmd == '' or cmd == None: # Empty input
         continue # Continue
     else: # Is not a command
-        print('Python '+platform.python_version()+' -> PyTerm -> "'+cmd+'" is not a command!') # Error
+        print('Python '+platform.python_version()+' -> PyTerm -> "'+cmd+'" is not a command! Type "help" for some commands to use!') # Error
 #   Get Python version  ^                        Get the command name  ^
