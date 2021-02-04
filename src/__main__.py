@@ -6,7 +6,6 @@ import webbrowser as web # Webbrowser for openLink command
 import subprocess as sp # Subprocess for ping
 import datetime as dt # Datetime for date and time
 from time import gmtime, strftime
-# webbrowser for openLink command, and datetime for date and time
 
 __cache__ = 0 # Set cache to 0
 prompt = '' # Setup prompt variable
@@ -38,11 +37,11 @@ def fileExists(name):
     return os.path.exists(name)
 
 def setupColor(): # Setup text and background color
-    try:
-        f = open('user_data/settings/color.txt', 'r')
-        os.system(f.read())
-    except:
-        os.system('color 0A')
+    try: # Try read files
+        f = open('user_data/settings/color.txt', 'r') # Open files
+        os.system(f.read()) # Read
+    except: # Does not exist/ or some other error
+        os.system('color 0A') # Default color, black green
 
 
 def cache():
@@ -56,15 +55,18 @@ def cache():
                     cache_ = open('user_data/cache.txt', 'w')
                     cache_.write('1')
                     __cache__ = 0
+                    cache.close()
             else:
                 cache = open('user_data/cache.txt', 'x')
                 cache.write('1')
                 __cache__ = 0
+                cache = close()
         else:
             os.mkdir('user_data')
             cache = open('user_data/cache.txt', 'x')
             cache.write('1')
             __cache__ = 0
+            cache.close()
     except:
         print('Error')
     
