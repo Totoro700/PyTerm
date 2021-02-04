@@ -243,12 +243,12 @@ while True:
             print('Error! Please try again and make sure that it is a valid file name and it doesn\'t already exists!')
     elif cmd == 'openFil': # Open file
         print('Full file name or directory? (eg. "text.txt" or "C:\\Python\\python.py")')
-        toOpen = input()
+        toOpen = input() # Get file name
         if fileExists(toOpen):
-            f = open(toOpen, 'r')
-            print(f.read())
+            f = open(toOpen, 'r') # Open file
+            print(f.read()) # Read file
         else:
-            print('The file does not exist!')
+            print('The file does not exist!') # File does not exist
     elif cmd == 'openBinFil': # Open binary file
         print('WARNING: This command may print a lot of text')
         print('Full binary file name or directory? (eg. "cmd.exe" or "C:\\Python\\python.dll")')

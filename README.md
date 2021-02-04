@@ -48,28 +48,6 @@ Or you can do [Linux and Mac OS X steps](#Linux-and-Mac-OS-X)
 
 You can also run `run.bat` to run `PyTerm.exe`
 
-## Folders
-
-`bin/` - The binary files ( `.exe` )
-
-`src/` - The script files
-
-`docs/` - The docs
-
-`.github/` - The folder for GitHub Actions
-
-## Files
-
-`.gitignore` - File to tell Git what files to not push/commit
-
-`run.bat` - Windows Batch file to run the `.exe` file in the `bin/` folder
-
-`py_run.bat` -  Windows Batch files to run the script ( `.py` )
-
-`package.json` - Almost the same thing as the `package.json` for [npm](https://npmjs.org)
-
-`package.xml`- Same thing as `package.json`, but with XML
-
 
 
 ## Credits
