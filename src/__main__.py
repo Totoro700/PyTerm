@@ -16,7 +16,7 @@ __os__ = platform.system() # Get operating system name and store it in a variabl
 def title():
     print('@------------------------------------------------------------------------------------@')
     print('|                                                                                    |')
-    print('|                                  |PyTerm v0.5.0|                                   |')
+    print('|                                  |PyTerm v0.5.1|                                   |')
     print('|                                                                                    |')
     print('@------------------------------------------------------------------------------------@')
 
@@ -462,7 +462,7 @@ while True:
             os.rename(toRename, toRenameName) # Rename
         except:
             print('Error! Please try again') # Error
-    elif cmd == 'dir': # Directory
+    elif cmd == 'dir' or cmd == 'ls': # Directory
         print('Directory?')
         dir = input() # Get directory
         try: # Try code
