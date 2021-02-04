@@ -46,7 +46,7 @@ Get the `.exe` file ( `bin/PyTerm.exe` ), then run it
 
 Or you can do [Linux and Mac OS X steps](#Linux-and-Mac-OS-X)
 
-You can also run `run.bat` to run PyTerm
+You can also run `run.bat` to run `PyTerm.exe`
 
 ## Folders
 
@@ -67,6 +67,8 @@ You can also run `run.bat` to run PyTerm
 `py_run.bat` -  Windows Batch files to run the script ( `.py` )
 
 `package.json` - Almost the same thing as the `package.json` for [npm](https://npmjs.org)
+
+`package.xml`- Same thing as `package.json`, but with XML
 
 
 

@@ -1,28 +1,7 @@
 Version 0.5.1 change log
 
 New commands/features:
-Added py command in src/__main__.py for opening Python interpreter
-Added move command to move a file
-Added tree command to graphically display the directory structure of a drive or path
-Added runPy to run a python files
-Added basic npm and pip commands
-	- npm install
-	- npm install -U
-	- npm upgrade
-	- npm update
-	- pip install
-	- pip update
-	- pip upgrade
-	- pip install -U
-Added statement if operating system is not recognized in runPy
-Added git clone command for cloning Git repositories
-Added package.xml for alternative to package.json
-Added an alternative command name to changePrompt: prompt
-[Windows] Added the title command to change the console title
-
+Added a alternative to dir: ls
 
 Updates/fixes:
-Fixed file being in use in mkfil command by closing the file
-Update help section for changePrompt
-Update diskpart:
-	Open diskpart directly instead of opening cmd then opening diskpart
+Updated command not found message
