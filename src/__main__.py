@@ -674,10 +674,10 @@ while True:
         except:
             print('Error! Please make sure the directory and repository url is valid!')
     elif cmd == 'title': # Change console title
-        if __os__ == 'Windows':
-            print('New title -> ', end='')
-            ctypes.windll.kernel32.SetConsoleTitleW(input())
-        else:
+        if __os__ == 'Windows': # Check if OS is Windows
+            print('New title -> ', end='') # Get new title
+            ctypes.windll.kernel32.SetConsoleTitleW(input()) # Set title
+        else: # Not Windows
             print('This function is only for Windows!')
     elif cmd == '' or cmd == None: # Empty input
         continue # Continue

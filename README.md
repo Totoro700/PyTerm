@@ -18,6 +18,8 @@ A simple Python terminal!
 
 Python >= **3.0.0**
 
+This supports Windows, Mac OS, and Linux, but some functions are limited to only Windows.
+
 ---
 
 ## Run
