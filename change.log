@@ -2,7 +2,8 @@ Version 0.5.1 change log
 
 New commands/features:
 Added a alternative to dir: ls
-Added new o=command (title) to change the console title
+Added new command (title) to change the console title
+Added clearData command
 
 Updates/fixes:
 Updated command not found message

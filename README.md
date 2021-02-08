@@ -48,9 +48,7 @@ Get the `.exe` file ( `bin/PyTerm.exe` ), then run it
 
 Or you can do [Linux and Mac OS X steps](#Linux-and-Mac-OS-X)
 
-You can also run `run.bat` to run `PyTerm.exe`
-
-
+You can also run `run.bat` to run `PyTerm.exe
 
 ## Credits
 
