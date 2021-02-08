@@ -141,8 +141,6 @@ while True:
         print('npm install                             Install npm package')
         print('npm update                              Update npm package')
         print('npm upgrade                             Upgrade npm package')
-        print('openBinFil                              Opens a binary file')
-        print('openFil                                 Opens a file')
         print('openLink                                Opens a link in your browser')
         print('openWindow                              Opens a window')
         print('ping                                    Pings a server with an IP address')
@@ -152,6 +150,8 @@ while True:
         print('prompt                                  Changes the prompt')
         print('py                                      [Windows] Opens Python\'s interpreter in cmd in a new window')
         print('pyver                                   Displays Python version')
+        print('openBinFil                              Reads a binary file')
+        print('readFil                                 Reads a file')
         print('rename                                  Renames a file')
         print('repo                                    Opens the GitHub repository')
         print('reset                                   Resets to the title screen')
@@ -198,8 +198,6 @@ while True:
         print('npm install                                                                            Install npm package')
         print('npm update                                                                              Update npm package')
         print('npm upgrade                                                                            Upgrade npm package')
-        print('openBinFil                                                                             Opens a binary file')
-        print('openFil                                                                                       Opens a file')
         print('openLink                                                                      Opens a link in your browser')
         print('openWindow                                                                                  Opens a window')
         print('systeminfo                                                            Shows information about you computer')
@@ -210,6 +208,8 @@ while True:
         print('pip install -U                                                                         Updates pip package')
         print('py                                            [Windows] Opens Python\'s interpreter in cmd in a new window')
         print('pyver                                                                              Displays Python version')
+        print('readFil                                                                                       Reads a file')
+        print('openBinFil                                                                             Reads a binary file')
         print('rename                                                                                      Renames a file')
         print('reset                                                                           Resets to the title screen')
         print('repo                                                                           Opens the GitHub repository')
@@ -241,7 +241,7 @@ while True:
             f.close() # Close file
         except:
             print('Error! Please try again and make sure that it is a valid file name and it doesn\'t already exists!')
-    elif cmd == 'openFil': # Open file
+    elif cmd == 'readFil': # Open file
         print('Full file name or directory? (eg. "text.txt" or "C:\\Python\\python.py")')
         toOpen = input() # Get file name
         if fileExists(toOpen):
