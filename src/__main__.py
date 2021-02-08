@@ -164,7 +164,8 @@ while True:
         print('TASKKILL                                Kill or stop a running process or application.')
         print('time                                    Also shows date and time')
         print('title                                   [Windows] Changes the console title')
-        print('tree                                    Graphically displays the directory structure of a drive or path\n')
+        print('tree                                    Graphically displays the directory structure of a drive or path')
+        print('\nRead the docs for more commands\n')
     elif cmd == 'help -a' or cmd == 'help --alt': # Help
         print('changelog                                                       Shows PyTerm\'s change log (../change.log)')
         print('color                                                            Changes the text and the background color')
@@ -221,7 +222,8 @@ while True:
         print('TASKKILL                                                    Kill or stop a running process or application.')
         print('time                                                                              Also shows date and time')
         print('title                                                                  [Windows] Changes the console title')
-        print('tree                                       Graphically displays the directory structure of a drive or path\n')
+        print('tree                                       Graphically displays the directory structure of a drive or path')
+        print('\nRead the docs for more commands\n')
     elif cmd == 'help -h' or cmd == 'help --help' or cmd == 'help /?':
         print('Usage:    help [-a]\n\n\n\n')
         print('Parameters: \n')
@@ -678,6 +680,17 @@ while True:
             print('New title -> ', end='') # Get new title
             ctypes.windll.kernel32.SetConsoleTitleW(input()) # Set title
         else: # Not Windows
+            print('This function is only for Windows!')
+    elif cmd == 'msgbox':
+        if __os__ == 'Windows': 
+            print('Title -> ', end='')
+            title = input()
+            print('Message -> ', end='')
+            try:
+                ctypes.windll.user32.MessageBoxW(0, input(), title, 0)
+            except:
+                print('Something went wrong! This may be an issue of your Windows computer, it may be to old for this feature')
+        else:
             print('This function is only for Windows!')
     elif cmd == '' or cmd == None: # Empty input
         continue # Continue
