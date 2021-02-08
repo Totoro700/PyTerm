@@ -128,7 +128,6 @@ while True:
         print('info -c                                 Clear stored info')
         print('info -g                                 Get stored info')
         print('ip                                      Displays your computer\'s IP address')
-        print('licenes                                 Shows PyTerm\'s license ')
         print('md                                      Creates a directory')
         print('math -a                                 Adds two numbers together')
         print('math -s                                 Subtracts two numbers')
@@ -155,14 +154,11 @@ while True:
         print('rename                                  Renames a file')
         print('repo                                    Opens the GitHub repository')
         print('reset                                   Resets to the title screen')
-        print('restart                                 Restarts your computer')
-        print('shutdown                                Shutdown your computer')
         print('sysinfo                                 Shows your computer\'s infomation')
         print('systeminfo                              Shows your computer\'s infomation')
         print('terminate                               Exits the program')
         print('TASKKILL                                Kill or stop a running process or application.')
         print('time                                    Also shows date and time')
-        print('title                                   [Windows] Changes the console title')
         print('tree                                    Graphically displays the directory structure of a drive or path')
         print('\nRead the docs for more commands\n')
     elif cmd == 'help -a' or cmd == 'help --alt': # Help
@@ -211,15 +207,10 @@ while True:
         print('readFil                                                                                       Reads a file')
         print('readBinFil                                                                             Reads a binary file')
         print('rename                                                                                      Renames a file')
-        print('reset                                                                           Resets to the title screen')
-        print('repo                                                                           Opens the GitHub repository')
-        print('restart                                                                             Restarts your computer')
-        print('shutdown                                                                            Shutdown your computer')
         print('systeminfo                                                               Shows your computer\'s infomation')
         print('terminate                                                                                Exits the program')
         print('TASKKILL                                                    Kill or stop a running process or application.')
         print('time                                                                              Also shows date and time')
-        print('title                                                                  [Windows] Changes the console title')
         print('tree                                       Graphically displays the directory structure of a drive or path')
         print('\nRead the docs for more commands\n')
     elif cmd == 'help -h' or cmd == 'help --help' or cmd == 'help /?':
@@ -700,6 +691,14 @@ while True:
                 print('Error! Something went wrong! Please try again!')
         else:
             print('That file does not exist! Please try again with another file')
+    elif cmd == 'clearData':
+        if fileExists('user_data'):
+            print('Clearing data . . .')
+            shutil.rmtree('user_data')
+            time.sleep(0.5)
+            print('Finished!')
+        else:
+            print('There are no data to clear!')
     elif cmd == '' or cmd == None: # Empty input
         continue # Continue
     else: # Is not a command
