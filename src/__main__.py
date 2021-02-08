@@ -12,7 +12,7 @@ prompt = '' # Setup prompt variable
 __os__ = platform.system() # Get operating system name and store it in a variable (const)
 
 def p(msg, end='\n'): # Alternative to print
-    p(msg, end)
+    print(msg, end)
 
 # Print version and title as function
 def title():
