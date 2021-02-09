@@ -41,7 +41,7 @@ When you first startup PyTerm you should see something like this:
 ```
 @------------------------------------------------------------------------------------@
 |                                                                                    |
-|                                  |PyTerm v0.4.4|                                   |
+|                                  |PyTerm v0.5.1|                                   |
 |                                                                                    |
 @------------------------------------------------------------------------------------@
 >
@@ -55,7 +55,7 @@ Now to get some commands you can use, type `help`
 
 
 
-If you want to exit, type `exit` or `terminate`, it should close once you press `enter`. You can also press `Ctrl` + `C` ( `⌘` + `C`  for Mac OS X)
+If you want to exit, type `exit` or `terminate`, it should close once you press `enter`. You can also press `Ctrl` + `C` ( `⌘` + `C`  for Mac OS X) or Ctrl ( `⌘` ) then enter
 
 
 

@@ -69,7 +69,7 @@ def cache():
             cache.close()
     except:
         print('Error')
-    
+
 def promptUpdate(): # Update prompt
     if fileExists('user_data/settings'):
         if fileExists('user_data/settings/prompt.txt'):
@@ -390,7 +390,7 @@ while True:
         try:
             shutil.copy(toCopy, toCopyDir) # Copy
         except:
-            print('Error! Please try again') 
+            print('Error! Please try again')
     elif cmd == 'find': # Find text in a file
         print('Full file or directory path to find text?')
         toFind = input() # Get file
@@ -402,7 +402,7 @@ while True:
                 toFindStr = f.read() # Read from file
                 print('First appearance of the word '+toFindTxt+' is found at character '+str(toFindStr.find(toFindTxt))) # Print results
             except:
-                print('Error! Please try again') 
+                print('Error! Please try again')
         else:
             print('File does not exist!')
     elif cmd == 'color': # Switch color
@@ -436,7 +436,7 @@ while True:
                 f.write('color '+bgColor+fgColor) # Write
                 f.close() # Close
         except: # Except
-            print('Error! Please try again') 
+            print('Error! Please try again')
     elif cmd == 'delDir' or cmd == 'rm': # Delete directory
         print('Directory of the folder to delete? Example: C:\\Users\\exampleUser\\Documents\\New_Folder')
         toDelDir = input() # Get directory
@@ -446,7 +446,7 @@ while True:
             except:
                 print('Error! Please make sure that directory/folder is not being used by another program!')
         else:
-            print('Not a valid directory of a folder!') 
+            print('Not a valid directory of a folder!')
     elif cmd == 'rename': # Rename file
         print('Full directory path of the file to rename? Example: C:\\Users\\exampleUser\\Documents\\original_file_name.txt')
         toRename = input() # Get old file name
@@ -455,14 +455,14 @@ while True:
         try:
             os.rename(toRename, toRenameName) # Rename
         except:
-            print('Error! Please try again') 
+            print('Error! Please try again')
     elif cmd == 'dir' or cmd == 'ls': # Directory
         print('Directory?')
         dir = input() # Get directory
         try: # Try code
             print(', '.join(os.listdir(dir))) # Print directory
-        except: 
-            print('Something went wrong! Please try again! Make sure the directory exists!') 
+        except:
+            print('Something went wrong! Please try again! Make sure the directory exists!')
     elif cmd == 'dir /' or cmd == 'dir \\': # Root directory
         print(', '.join(os.listdir(dir))) # Print directory
     elif cmd == 'print': # Print
@@ -503,7 +503,7 @@ while True:
                 f.write(prompt) # Write
                 f.close() # Close
         except: # Except
-            continue 
+            continue
     elif cmd == 'exists': # Check if directory or folder exists
         print('Directory of file or folder?')
         print(fileExists(input()))
@@ -514,13 +514,13 @@ while True:
         try:
             numOne = flt(input()) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number') 
+            print('Error! Please make sure you entered a valid number')
             continue
         print('Number two -> ', end='') # Get number two
         try:
             numTwo = flt(input()) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number') 
+            print('Error! Please make sure you entered a valid number')
             continue
         print(str(numOne)+' + '+str(numTwo)+' = '+str(numOne + numTwo)) # Calculate and output answer
     elif cmd == 'math -s' or cmd == 'math --subtract': # Subtract
@@ -528,13 +528,13 @@ while True:
         try:
             numOne = flt(input()) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number') 
+            print('Error! Please make sure you entered a valid number')
             continue
         print('Number two -> ', end='') # Get number two
         try:
             numTwo = flt(input()) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number') 
+            print('Error! Please make sure you entered a valid number')
             continue
         print(str(numOne)+' - '+str(numTwo)+' = '+str(numOne - numTwo)) # Calculate and output answer
     elif cmd == 'math -m' or cmd == 'math --multiply': # Multiply
@@ -542,13 +542,13 @@ while True:
         try:
             numOne = flt(input()) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number') 
+            print('Error! Please make sure you entered a valid number')
             continue
         print('Number two -> ', end='') # Get number two
         try:
             numTwo = flt(input()) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number') 
+            print('Error! Please make sure you entered a valid number')
             continue
         print(str(numOne)+' * '+str(numTwo)+' = '+str(numOne * numTwo)) # Calculate and output answer
     elif cmd == 'math -d' or cmd == 'math --divide': # Divide
@@ -556,19 +556,19 @@ while True:
         try:
             numOne = flt(input()) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number') 
+            print('Error! Please make sure you entered a valid number')
             continue
         print('Number two -> ', end='') # Get number two
         try:
             numTwo = flt(input()) # Try to get input as float
         except:
-            print('Error! Please make sure you entered a valid number') 
+            print('Error! Please make sure you entered a valid number')
             continue
         try:
             print(str(numOne)+' / '+str(numTwo)+' = '+str(numOne / numTwo)) # Try to calculate and output answer
         except ZeroDivisionError: # Divisor is zero
-            print('Error! Please make sure the divisor isn\'t zero!') 
-        except: 
+            print('Error! Please make sure the divisor isn\'t zero!')
+        except:
             print('Error! Please try again!')
     elif cmd == 'math -h' or cmd == 'math --help' or cmd == 'math /?' or cmd == 'math -?' or cmd == 'math': # Math help
         print('\nUsage:    math [-a | -s | -m | -d] \n\n\n\n')
@@ -582,7 +582,7 @@ while True:
         if __os__ == 'Windows': # Check if OS is Windows
             sp.Popen('notepad.exe') # subprocess.Popen
         else:
-            print('Sorry, notepad is only for Windows!') 
+            print('Sorry, notepad is only for Windows!')
     elif cmd == 'py': # Python
         if __os__ == 'Windows':
             os.system('start cmd /c py')
@@ -592,7 +592,7 @@ while True:
         if fileExists('../LICENSE.txt'): # Check if exists
             print(open('../LICENSE.txt', 'r').read()) # Find, read, and output
         else:
-            print('Could not find license!') 
+            print('Could not find license!')
     elif cmd == 'os': # OS
         print(platform.system())
     elif cmd == 'osver': # OS version
@@ -629,7 +629,7 @@ while True:
             try:
                 os.rename(curFil, input()) # Try move using os.rename
             except:
-                print('Error! Make sure both directories are valid and no programs are using the file.') 
+                print('Error! Make sure both directories are valid and no programs are using the file.')
         else:
             print('That file does not exists! Please try again') # File does not exists
     elif cmd == 'tree': # Tree
@@ -671,7 +671,7 @@ while True:
         else: # Not Windows
             print('This function is only for Windows!')
     elif cmd == 'msgbox':
-        if __os__ == 'Windows': 
+        if __os__ == 'Windows':
             print('Title -> ', end='')
             title = input()
             print('Message -> ', end='')
@@ -702,5 +702,5 @@ while True:
     elif cmd == '' or cmd == None: # Empty input
         continue # Continue
     else: # Is not a command
-        print('Python '+platform.python_version()+' -> PyTerm -> "'+cmd+'" is not a command! Type "help" for some commands to use!') 
+        print('Python '+platform.python_version()+' -> PyTerm -> "'+cmd+'" is not a command! Type "help" for some commands to use!')
 #   Get Python version  ^                        Get the command name  ^
