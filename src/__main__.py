@@ -678,10 +678,13 @@ while True:
             print('That file does not exist! Please try again with another file')
     elif cmd == 'clearData':
         if fileExists('user_data'):
-            print('Clearing data . . .')
-            shutil.rmtree('user_data')
-            time.sleep(0.5)
-            print('Finished!')
+            try:
+                print('Clearing data . . .')
+                shutil.rmtree('user_data')
+                time.sleep(0.5)
+                print('Finished!')
+            except:
+                print('There was an error clearing the cache!')
         else:
             print('There are no data to clear!')
     elif cmd == 'cache':
