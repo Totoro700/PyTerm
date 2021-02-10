@@ -6,11 +6,9 @@ import webbrowser as web # Webbrowser for openLink command
 import subprocess as sp # Subprocess for ping
 import datetime as dt # Datetime for date and time
 from time import gmtime, strftime
-
 __cache__ = 0 # Set cache to 0
 prompt = '' # Setup prompt variable
 __os__ = platform.system() # Get operating system name and store it in a variable (const)
-
 # Print version and title as function
 def title():
     print('@------------------------------------------------------------------------------------@')
@@ -18,32 +16,25 @@ def title():
     print('|                                  |PyTerm v0.5.1|                                   |')
     print('|                                                                                    |')
     print('@------------------------------------------------------------------------------------@')
-
 def clear(): # Clear screen
     if __os__ == 'Windows': # Windows
         os.system('cls')
     else: # Linux and Mac OS X
         os.system('clear')
-
 def flt(param): # Return float from param
     return float(param)
-
 def ping(host): # Ping a server
     param = '-n' if platform.system().lower() == 'windows' else '-c' # Setup ping parameters
     command = ['ping', param, '4', host] # Ping command
     return sp.call(command) == 0 # Return text
-
 def fileExists(name):
     return os.path.exists(name)
-
 def setupColor(): # Setup text and background color
     try: # Try read files
         f = open('user_data/settings/color.txt', 'r') # Open files
         os.system(f.read()) # Read
     except: # Does not exist/ or some other error
         os.system('color 0A') # Default color, black green
-
-
 def cache():
     try:
         if fileExists('user_data'):
@@ -69,7 +60,6 @@ def cache():
             cache.close()
     except:
         print('Error')
-
 def promptUpdate(): # Update prompt
     if fileExists('user_data/settings'):
         if fileExists('user_data/settings/prompt.txt'):
@@ -86,11 +76,8 @@ def promptUpdate(): # Update prompt
         f.write('>')
         f.close()
         prompt = '>'
-
 def fopenLink(link):
     web.open(link)
-
-
 def init():
     clear()
     print('Loading . . .')
@@ -101,9 +88,7 @@ def init():
     promptUpdate()
     clear()
     title()
-
 init()
-
 # Main loop
 while True:
     print(prompt+' ', end='') # Input prompt without line break ( \n )
