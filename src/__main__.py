@@ -59,7 +59,7 @@ def cache():
             __cache__ = 0
             cache.close()
     except:
-        print('Error')
+        print('Error') # This should not happen
 def promptUpdate(): # Update prompt
     if fileExists('user_data/settings'):
         if fileExists('user_data/settings/prompt.txt'):
@@ -684,6 +684,11 @@ while True:
             print('Finished!')
         else:
             print('There are no data to clear!')
+    elif cmd == 'cache':
+        try:
+            print(open('user_data/cache.txt', 'r').read()) # Should be 1
+        except:
+            print('None') # No cache (deleted manually or using the clearData command)
     elif cmd == '' or cmd == None: # Empty input
         continue # Continue
     else: # Is not a command
