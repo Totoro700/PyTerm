@@ -553,7 +553,7 @@ while True:
             print(str(numOne)+' / '+str(numTwo)+' = '+str(numOne / numTwo)) # Try to calculate and output answer
         except ZeroDivisionError: # Divisor is zero
             print('Error! Please make sure the divisor isn\'t zero!')
-        except:
+        except: # Other error
             print('Error! Please try again!')
     elif cmd == 'math -h' or cmd == 'math --help' or cmd == 'math /?' or cmd == 'math -?' or cmd == 'math': # Math help
         print('\nUsage:    math [-a | -s | -m | -d] \n\n\n\n')
@@ -566,7 +566,7 @@ while True:
     elif cmd == 'notepad':  # Open Windows notepad
         if __os__ == 'Windows': # Check if OS is Windows
             sp.Popen('notepad.exe') # subprocess.Popen
-        else:
+        else: # Is not Windows (Mac OS, Linux, or others)
             print('Sorry, notepad is only for Windows!')
     elif cmd == 'py': # Python
         if __os__ == 'Windows':
@@ -656,15 +656,15 @@ while True:
         else: # Not Windows
             print('This function is only for Windows!')
     elif cmd == 'msgbox':
-        if __os__ == 'Windows':
-            print('Title -> ', end='')
-            title = input()
-            print('Message -> ', end='')
+        if __os__ == 'Windows': # Check if OS is Windows
+            print('Title -> ', end='') # Ask title
+            title = input() # Get title
+            print('Message -> ', end='') # Ask message
             try:
-                ctypes.windll.user32.MessageBoxW(0, input(), title, 0)
+                ctypes.windll.user32.MessageBoxW(0, input(), title, 0) # Open window
             except:
-                print('Something went wrong! This may be an issue of your Windows computer, it may be to old for this feature')
-        else:
+                print('Something went wrong! This may be an issue of your Windows computer, as it may be to old for this feature')
+        else: # Not Windows (Mac OS, Linux, or others)
             print('This function is only for Windows!')
     elif cmd == 'openFil': # Open a file
         print('Path to file -> ', end='') # Get filename
@@ -677,15 +677,15 @@ while True:
         else:
             print('That file does not exist! Please try again with another file')
     elif cmd == 'clearData':
-        if fileExists('user_data'):
+        if fileExists('user_data'): # See if there is data to clear
             try:
                 print('Clearing data . . .')
-                shutil.rmtree('user_data')
-                time.sleep(0.5)
+                shutil.rmtree('user_data') # Clear data
+                time.sleep(0.5) # Pause
                 print('Finished!')
-            except:
+            except: # Error for some reason
                 print('There was an error clearing the cache!')
-        else:
+        else: # No data to clear
             print('There are no data to clear!')
     elif cmd == 'cache':
         try:
