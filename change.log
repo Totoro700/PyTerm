@@ -1,4 +1,4 @@
-Version 0.5.1 change log
+Version 0.5.2 change log
 
 New commands/features:
 Added a alternative to dir: ls
@@ -8,3 +8,5 @@ Added clearData command
 Updates/fixes:
 Updated command not found message
 Renamed the openFil command and openBinFil command to readFil and readBinFil
+Compressed code
+Update color character table in the color command
