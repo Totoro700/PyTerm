@@ -1,5 +1,5 @@
 # __main__.py
-# Import
+# Import modules
 # os for file commands and others, time for wait second, platform for os command, multiprocessing for CPU count
 import os, time, platform, shutil, socket, getpass, multiprocessing, tkinter, sys, ctypes
 import webbrowser as web # Webbrowser for openLink command
@@ -27,68 +27,68 @@ def ping(host): # Ping a server
     param = '-n' if platform.system().lower() == 'windows' else '-c' # Setup ping parameters
     command = ['ping', param, '4', host] # Ping command
     return sp.call(command) == 0 # Return text
-def fileExists(name):
+def fileExists(name): # Check if file/folder exists
     return os.path.exists(name)
 def setupColor(): # Setup text and background color
     try: # Try read files
         f = open('user_data/settings/color.txt', 'r') # Open files
         os.system(f.read()) # Read
-    except: # Does not exist/ or some other error
+    except: # Does not exist or some other error
         os.system('color 0A') # Default color, black green
-def cache():
+def cache(): # Cache
     try:
-        if fileExists('user_data'):
-            if fileExists('user_data/cache.txt'):
-                cache = open('user_data/cache.txt', 'r')
-                if '1' in cache.read():
-                    __cache__ = 1
-                else:
-                    cache_ = open('user_data/cache.txt', 'w')
-                    cache_.write('1')
-                    __cache__ = 0
+        if fileExists('user_data'): # Check if user data exists
+            if fileExists('user_data/cache.txt'): # Check if cache exists
+                cache = open('user_data/cache.txt', 'r') # Read cache
+                if '1' in cache.read(): # If cache equals 1
+                    __cache__ = 1 # Set cache variable to 1
+                else: # Is not 1 (user changed)
+                    cache_ = open('user_data/cache.txt', 'w') # Open file with write access
+                    cache_.write('1') # Write 1 to file
+                    __cache__ = 1 # Set cache to 1
                     cache.close()
             else:
-                cache = open('user_data/cache.txt', 'x')
-                cache.write('1')
-                __cache__ = 0
-                cache = close()
+                cache = open('user_data/cache.txt', 'x') # Create file
+                cache.write('1') # Write 1 to file
+                __cache__ = 1 # Set cache to 1
+                cache.close() # Close file 
         else:
-            os.mkdir('user_data')
-            cache = open('user_data/cache.txt', 'x')
-            cache.write('1')
-            __cache__ = 0
-            cache.close()
+            os.mkdir('user_data') # Create user data folder
+            cache = open('user_data/cache.txt', 'x') # Create file
+            cache.write('1') # Write 1 to file
+            __cache__ = 1 # Set cache to 1
+            cache.close() # Close file
     except:
         print('Error') # This should not happen
 def promptUpdate(): # Update prompt
-    if fileExists('user_data/settings'):
-        if fileExists('user_data/settings/prompt.txt'):
-            global prompt
-            prompt = open('user_data/settings/prompt.txt', 'r').read()
+    if fileExists('user_data/settings'): # Check if user settings exists
+        if fileExists('user_data/settings/prompt.txt'): # Check if thr prompt file exists
+            global prompt # Set prompt as global variable
+            prompt = open('user_data/settings/prompt.txt', 'r').read() # Set prompt
         else:
-            f = open('user_data/settings/prompt.txt', 'x')
-            f.write('>')
-            f.close()
-            prompt = '>'
+            f = open('user_data/settings/prompt.txt', 'x') # Create file
+            f.write('>') # Write default prompt
+            f.close() # Close file
+            prompt = '>' # Set default prompt
     else:
-        os.mkdir('user_data/settings')
-        f = open('user_data/settings/prompt.txt', 'x')
-        f.write('>')
-        f.close()
-        prompt = '>'
+        os.mkdir('user_data/settings') # Create user settings folder
+        f = open('user_data/settings/prompt.txt', 'x') # Create file
+        f.write('>') # Write default prompt
+        f.close() # Close open file
+        prompt = '>' # Set default prompt
 def fopenLink(link):
     web.open(link)
 def init():
-    clear()
+    clear() # Clear text
     print('Loading . . .')
-    cache()
+    cache() # Set cache
     print('Loading color . . .')
-    setupColor()
+    setupColor() # Set color
     print('Setting up . . .')
-    promptUpdate()
-    clear()
-    title()
-init()
+    promptUpdate() # Set prompt
+    clear() # Clear text
+    title() # SHow title
+init() # Initialize
 # Main loop
 while True:
     print(prompt+' ', end='') # Input prompt without line break ( \n )
@@ -676,7 +676,7 @@ while True:
                 print('Error! Something went wrong! Please try again!')
         else:
             print('That file does not exist! Please try again with another file')
-    elif cmd == 'clearData':
+    elif cmd == 'clearData': # Clear data (user_data)
         if fileExists('user_data'): # See if there is data to clear
             try:
                 print('Clearing data . . .')
@@ -687,7 +687,7 @@ while True:
                 print('There was an error clearing the cache!')
         else: # No data to clear
             print('There are no data to clear!')
-    elif cmd == 'cache':
+    elif cmd == 'cache': # Show cache (user_data/cache.txt)
         try:
             print(open('user_data/cache.txt', 'r').read()) # Should be 1
         except:
