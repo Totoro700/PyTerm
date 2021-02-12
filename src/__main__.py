@@ -13,7 +13,7 @@ __os__ = platform.system() # Get operating system name and store it in a variabl
 def title():
     print('@------------------------------------------------------------------------------------@')
     print('|                                                                                    |')
-    print('|                                  |PyTerm v0.5.1|                                   |')
+    print('|                                  |PyTerm v0.5.2|                                   |')
     print('|                                                                                    |')
     print('@------------------------------------------------------------------------------------@')
 def clear(): # Clear screen
@@ -392,14 +392,14 @@ while True:
             print('File does not exist!')
     elif cmd == 'color': # Switch color
         print('Colors:') # Ask color
-        print('0 = Black       8 = Gray') # Show colors
-        print('1 = Blue        9 = Light Blue')
-        print('2 = Green       A = Light Green')
-        print('3 = Aqua        B = Light Aqua')
-        print('4 = Red         C = Light Red')
-        print('5 = Purple      D = Light Purple')
-        print('6 = Yellow      E = Light Yellow')
-        print('7 = White       F = Bright White')
+        print('0 = Black                8 = Gray') # Show colors
+        print('1 = Blue                 9 = Light Blue')
+        print('2 = Green                A = Light Green')
+        print('3 = Aqua                 B = Light Aqua')
+        print('4 = Red                  C = Light Red')
+        print('5 = Purple               D = Light Purple')
+        print('6 = Yellow               E = Light Yellow')
+        print('7 = White                F = Bright White')
         print('Background color?')
         bgColor = input() # Get background color
         print('Text color (foreground)?')
@@ -562,7 +562,7 @@ while True:
         print('    -m  or  --multiply   Multiplies two numbers')
         print('    -d  or  --divide     Divides two numbers\n\n')
     elif cmd == 'ver' or cmd == 'version': # Program version
-        print('PyTerm v0.5.1')
+        print('PyTerm v0.5.2')
     elif cmd == 'notepad':  # Open Windows notepad
         if __os__ == 'Windows': # Check if OS is Windows
             sp.Popen('notepad.exe') # subprocess.Popen
