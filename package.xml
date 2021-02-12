@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <Pkg name='PyTerm' type='pkg'>
 	<Name type='name'>PyTerm</Name>
-	<Version type='ver'>0.5.1</Version>
+	<Version type='ver'>0.5.2</Version>
 	<Description type='text'>A simple Python terminal!</Description>
 	<License type='obj'>
 		<Type type='name'>MIT</Type>
