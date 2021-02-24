@@ -30,12 +30,6 @@ Select `src/__main__.py` and open/run it
 
 If your on Windows, you can also run `bin/PyTerm.exe`
 
-
-
----
-
-
-
 When you first startup PyTerm you should see something like this:
 
 ```
@@ -51,11 +45,11 @@ Which is great!
 
 
 
-Now to get some commands you can use, type `help`
+Now to get some commands you can use, type `help`, but remember that not *all* commands are listed in the `help` command
 
 
 
-If you want to exit, type `exit` or `terminate`, it should close once you press `enter`. You can also press `Ctrl` + `C` ( `⌘` + `C`  for Mac OS X) or Ctrl ( `⌘` ) then enter
+If you want to exit, type `exit` or `terminate`, it should close once you press `enter`. You can also press `Ctrl` + `C` ( `⌘` + `C`  for Mac OS) or Ctrl ( `⌘` ) + Z then enter
 
 
 
