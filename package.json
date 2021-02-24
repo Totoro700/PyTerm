@@ -2,10 +2,7 @@
 	"name": "PyTerm",
 	"version": "0.5.2",
 	"description": "A simple Python terminal",
-	"license": {
-		"type": "MIT",
-		"path": "./LICENSE.txt"
-	},
+	"license": "MIT",
 	"dependencies": {
 		"python": ">=3",
 		"python-modules": [
