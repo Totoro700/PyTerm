@@ -231,7 +231,7 @@ while True:
         toOpen = input() # Collect full directory or full file name
         print('Loading . . .')
         time.sleep(3)
-        if fileExists(toOpen): # See if file exsits
+        if fileExists(toOpen): # See if file exists
             f = open(toOpen, 'rb') # Open/read binary file
             print(f.read()) # Display file
         else:
@@ -693,7 +693,7 @@ while True:
         except:
             print('None') # No cache (deleted manually or using the clearData command)
     elif cmd == '' or cmd == None: # Empty input
-        continue # Continue
+        continue # Continue parsing commands
     else: # Is not a command
         print('Python '+platform.python_version()+' -> PyTerm -> "'+cmd+'" is not a command! Type "help" for some commands to use!')
 #   Get Python version  ^                        Get the command name  ^
