@@ -7,10 +7,10 @@
 		"python": ">=3",
 		"python-modules": [
 			"os",
-			"time",
 			"platform",
-			"subprocess",
+			"time",
 			"shutil",
+			"subprocess",
 			"socket",
 			"getpass",
 			"multiprocessing",
@@ -20,6 +20,7 @@
 			"sys",
 			"ctypes"
 		],
+		"ts": "^0.2.2"
 	},
 	"main": "src/__main__.py",
 	"change_log": "change.log"
