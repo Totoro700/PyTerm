@@ -692,6 +692,9 @@ while True:
             print(open('user_data/cache.txt', 'r').read()) # Should be 1
         except:
             print('None') # No cache (deleted manually or using the clearData command)
+    elif cmd == 'refresh':
+        os.system('cls')
+        init()
     elif cmd == '' or cmd == None: # Empty input
         continue # Continue parsing commands
     else: # Is not a command
