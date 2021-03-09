@@ -1,11 +1,7 @@
-# Ignore compiled binary files
+# Ignore python compiled binary files
 
 __pycache__/
 
 # PyTerm user data folder
 
 user_data/
-
-# IntelliJ folder
-
-.idea/
