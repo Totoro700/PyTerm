@@ -104,7 +104,6 @@ while True:
         print('dir                                     Displays a list of files and subdirectories in a directory.')
         print('dirRoot                                 Displays a list of files and subdirectories in the root directory.')
         print('diskpart                                Displays or configures Disk Partition properties')
-        print('echo                                    Displays messages you enter')
         print('exists                                  Checks if a file or folder exists')
         print('exit                                    Exits the program')
         print('find                                    Finds a specific text in a file')
@@ -130,8 +129,7 @@ while True:
         print('ping                                    Pings a server with an IP address')
         print('pip install                             Installs pip package')
         print('pip install -U                          Updates pip package')
-        print('print                                   Displays messages you enter')
-        print('prompt                                  Changes the prompt')
+        print('powershell                              Open PowerShell')
         print('py                                      [Windows] Opens Python\'s interpreter in cmd in a new window')
         print('pyver                                   Displays Python version')
         print('readBinFil                              Reads a binary file')
@@ -157,7 +155,6 @@ while True:
         print('dir                                            Displays a list of files and subdirectories in a directory.')
         print('dirRoot                                 Displays a list of files and subdirectories in the root directory.')
         print('diskpart                                                  Displays or configures Disk Partition properties')
-        print('echo                                                                           Displays messages you enter')
         print('exists                                                                   Checks if a file or folder exists')
         print('exit                                                                                     Exits the program')
         print('find                                                                       Finds a specific text in a file')
@@ -183,10 +180,10 @@ while True:
         print('openWindow                                                                                  Opens a window')
         print('systeminfo                                                            Shows information about you computer')
         print('ping                                                                     Pings a server with an IP address')
-        print('print                                                                          Displays messages you enter')
         print('prompt                                                                                  Changes the prompt')
         print('pip install                                                                           Installs pip package')
         print('pip install -U                                                                         Updates pip package')
+        print('powershell                                                                                 Open PowerShell')
         print('py                                            [Windows] Opens Python\'s interpreter in cmd in a new window')
         print('pyver                                                                              Displays Python version')
         print('readFil                                                                                       Reads a file')
@@ -692,9 +689,14 @@ while True:
             print(open('user_data/cache.txt', 'r').read()) # Should be 1
         except:
             print('None') # No cache (deleted manually or using the clearData command)
-    elif cmd == 'refresh':
+    elif cmd == 'refresh': # Refresh files
         os.system('cls')
         init()
+    elif cmd == 'powershell' or cmd == 'ps': # Open PowerShell
+        try:
+            os.system('start powershell')
+        except:
+            print('Error! Make sure you have PowerShell installed!')
     elif cmd == '' or cmd == None: # Empty input
         continue # Continue parsing commands
     else: # Is not a command
