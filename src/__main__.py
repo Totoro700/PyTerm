@@ -1,7 +1,7 @@
 # __main__.py
 # Import modules
 # os for file commands and others, time for wait second, platform for os command, multiprocessing for CPU count
-import os, time, platform, shutil, socket, getpass, multiprocessing, tkinter, sys, ctypes
+import os, time, platform, shutil, socket, getpass, multiprocessing, tkinter, sys, ctypes, pyglet
 import webbrowser as web # Webbrowser for openLink command
 import subprocess as sp # Subprocess for ping
 import datetime as dt # Datetime for date and time
@@ -83,11 +83,11 @@ def init():
     print('Loading . . .')
     cache() # Set cache
     print('Loading color . . .')
-    setupColor() # Set color
+    setupColor() # Set color  
     print('Setting up . . .')
     promptUpdate() # Set prompt
     clear() # Clear text
-    title() # SHow title
+    title() # Show title
 init() # Initialize
 # Main loop
 while True:
@@ -329,7 +329,7 @@ while True:
     elif cmd == 'ping': # Ping server
         print('IP address to ping?')
         ping(input()) # Get input and start ping
-    elif cmd == 'ping -s' or cmd == 'ping --self': # Ping self server
+    elif cmd == 'ping -s' or cmd == 'ping --self' or cmd == 'ping @s': # Ping self server
         ping(socket.gethostbyname(socket.gethostname())) # Get self server and start ping
     elif cmd == 'systeminfo' or cmd == 'sysinfo':
         print('System information\n')
@@ -606,7 +606,7 @@ while True:
     elif cmd == 'move': # Move file
         print('Path/directory to current file to move -> ', end='') # Get current file
         curFil = input()
-        if fileExists(curFil): # CHeck if current file exists
+        if fileExists(curFil): # Check if current file exists
             print('Path/directory to new file -> ', end='') # New file
             try:
                 os.rename(curFil, input()) # Try move using os.rename
