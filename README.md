@@ -32,15 +32,15 @@ Install [Python 3](https://python.org/downloads)
 
 Get the repository:
 
-Git: `git clone https://github.com/Totoro700/PyTerm.git`
+\> Git: `git clone https://github.com/Totoro700/PyTerm.git`
 
-GitHub CLI: `gh repo clone Totoro700/PyTerm`
+\> GitHub CLI: `gh repo clone Totoro700/PyTerm`
 
 Open the folder `PyTerm`
 
 Open the folder `src/`
 
-Open `__main__.py` with Python 3
+Open `__main__.py` with Python 3.0 or higher, (try 3.9.5 if possible)
 
 ### Windows
 
@@ -52,4 +52,4 @@ You can also run `run.bat` to run `PyTerm.exe`
 
 ## Credits
 
-Thanks to [@brentvollebregt](https://github.com/brentvollebregt) for [auto-py-to-exe](https://github.com/brentvollebregt/auto-py-to-exe)
+Thanks to [@brentvollebregt](https://github.com/brentvollebregt) for [auto-py-to-exe](https://github.com/brentvollebregt/auto-py-to-exe) to convert the python scripts to code

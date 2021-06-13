@@ -35,13 +35,13 @@ def setupColor(): # Setup text and background color
         os.system(f.read()) # Read
     except: # Does not exist or some other error
         os.system('color 0A') # Default color, black green
-def cache(): # Cache
+def cache(): # Cache, to mark that the user ran this program before
     try:
         if fileExists('user_data'): # Check if user data exists
             if fileExists('user_data/cache.txt'): # Check if cache exists
                 cache = open('user_data/cache.txt', 'r') # Read cache
                 if '1' in cache.read(): # If cache equals 1
-                    __cache__ = 1 # Set cache variable to 1
+                    __cache__ = 1 # Set cache variable to 1, or do nothing
                 else: # Is not 1 (user changed)
                     cache_ = open('user_data/cache.txt', 'w') # Open file with write access
                     cache_.write('1') # Write 1 to file
@@ -194,7 +194,7 @@ while True:
         print('TASKKILL                                                    Kill or stop a running process or application.')
         print('time                                                                              Also shows date and time')
         print('tree                                       Graphically displays the directory structure of a drive or path')
-        print('\nRead the docs for more commands\n')
+        print('\nRead the docs for more commands and detailed descriptions\n')
     elif cmd == 'help -h' or cmd == 'help --help' or cmd == 'help /?':
         print('Usage:    help [-a]\n\n\n\n')
         print('Parameters: \n')
@@ -648,7 +648,7 @@ while True:
             print('Error! Please make sure the directory and repository url is valid!')
     elif cmd == 'title': # Change console title
         if __os__ == 'Windows': # Check if OS is Windows
-            print('New title -> ', end='') # Get new title
+            print('Name for new window title -> ', end='') # Get new title
             ctypes.windll.kernel32.SetConsoleTitleW(input()) # Set title
         else: # Not Windows
             print('This function is only for Windows!')
@@ -673,22 +673,30 @@ while True:
                 print('Error! Something went wrong! Please try again!')
         else:
             print('That file does not exist! Please try again with another file')
-    elif cmd == 'clearData': # Clear data (user_data)
-        if fileExists('user_data'): # See if there is data to clear
-            try:
-                print('Clearing data . . .')
-                shutil.rmtree('user_data') # Clear data
-                time.sleep(0.5) # Pause
-                print('Finished!')
-            except: # Error for some reason
-                print('There was an error clearing the cache!')
-        else: # No data to clear
-            print('There are no data to clear!')
+    elif cmd == 'deleteuserdata': # Clear data (user_data)
+        print('Are you sure you want to delete all user data?   Y/N')
+        deluserdata = input()
+        if deluserdata == 'Y' or deluserdata == 'y':
+            if fileExists('user_data'): # See if there is data to clear
+                try:
+                    print('Clearing data . . .')
+                    shutil.rmtree('user_data') # Clear data
+                    time.sleep(0.5) # Pause
+                    print('Finished!')
+                except: # Error for some reason
+                    print('There was an error clearing the data!')
+            else: # No data to clear
+                print('There are no data to clear!')
+        elif deluserdata == 'N' or deluserdata == 'n':
+            print('\n')
+            continue
+        else:
+            print('Could not process answer! Please try again')
     elif cmd == 'cache': # Show cache (user_data/cache.txt)
         try:
             print(open('user_data/cache.txt', 'r').read()) # Should be 1
         except:
-            print('None') # No cache (deleted manually or using the clearData command)
+            print('There is no current cache value!') # No cache (deleted manually or using the clearData command)
     elif cmd == 'refresh': # Refresh files
         os.system('cls')
         init()
